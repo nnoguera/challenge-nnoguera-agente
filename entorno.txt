@@ -26,11 +26,3 @@ Una vez activado el entorno, instala todos los paquetes necesarios leyendo el ar
 ```powershell
 pip install -r requirements.txt
 ```
-
----
-**💡 Buena práctica (Git):**
-Para evitar que este problema ocurra al compartir código a través de repositorios (como GitHub), asegúrate de tener un archivo llamado `.gitignore` en la raíz de tu proyecto que contenga la línea:
-```text
-.venv/
-```
-Esto le dirá a Git que ignore la carpeta del entorno virtual para que nunca se suba ni se copie accidentalmente. Solo debes compartir tu código y el archivo `requirements.txt`.
