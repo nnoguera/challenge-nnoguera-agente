@@ -1,4 +1,4 @@
-# Challenge Agente - DocumentosInternosAsk
+# Challenge Agente - Consultas - Documentos Internos
 
 Un proyecto de Agente Inteligente Funcional diseñado para interactuar con una base de conocimiento interna compuesta por documentos PDF, Word y Excel. Desarrollado con Python, Flask, LangChain y Google Gemini.
 
@@ -8,7 +8,7 @@ El sistema está dividido en varios componentes principales:
 
 1. **Interfaz de Usuario (Frontend):**
    - Construida con HTML5, CSS3 (Dark Mode) y Vanilla JS.
-   - Proporciona un chat interactivo con indicador de escritura, avatares y una barra lateral para configurar y subir documentos mediante Drag & Drop.
+   - Proporciona un chat interactivo con indicador de escritura, una barra lateral para subir documentos mediante Drag & Drop.
 
 2. **Servidor Web (Flask - `app.py`):**
    - Expone la interfaz gráfica.
@@ -18,7 +18,7 @@ El sistema está dividido en varios componentes principales:
 3. **Motor del Agente (`agente_nn.py`):**
    - Utiliza LangChain para orquestar la cadena `RetrievalQA`.
    - Emplea **FAISS** para crear y gestionar el vectorstore local a partir de los documentos procesados.
-   - Se conecta al modelo LLM de Google (**Gemini 1.5 Flash**) y usa **Google Generative AI Embeddings** para generar los vectores.
+   - Se conecta al modelo LLM de Google (**Gemini 2.5 Flash**) y usa **Google Generative AI Embeddings** para generar los vectores.
    - Expone la función principal `ask()` para responder a las preguntas y citar las fuentes.
 
 4. **Procesadores de Documentos (`loaders.py`):**
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 ### 4. Configurar variables de entorno
 Crea un archivo llamado `.env` en la raíz del proyecto tomando como base `.env.example`:
 ```env
-GOOGLE_API_KEY=tu_api_key_de_gemini_aqui
+GOOGLE_API_KEY=tu_api_key
 ```
 
 ### 5. Ejecutar la aplicación
