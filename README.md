@@ -62,6 +62,9 @@ python app.py
 ```
 Abre tu navegador web e ingresa a `http://127.0.0.1:5000/`.
 
+### 6. Observaciones generales ante problemas de ejecución
+Leer el archivo entorno.txt
+
 ## 🧠 Ejemplos de Uso
 
 1. **Subir Documentos:**
