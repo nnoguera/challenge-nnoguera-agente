@@ -1,0 +1,36 @@
+Para que tu proyecto pueda ejecutarse en cualquier PC sin problemas, **no debes copiar la carpeta `.venv`**. Los entornos virtuales de Python contienen rutas absolutas que apuntan a las carpetas específicas del usuario y la computadora donde se crearon. Al copiar la carpeta `.venv` a otra PC, esas rutas se rompen.
+
+La forma correcta de compartir y ejecutar un proyecto en otra computadora es crear un entorno virtual nuevo en esa máquina e instalar las dependencias. Aquí tienes los pasos exactos que debes seguir (o que la otra persona debe seguir en su PC) desde la terminal del proyecto:
+
+### 1. Eliminar el entorno virtual roto (Opcional pero recomendado)
+Si ya tienes una carpeta `.venv` copiada que no funciona, es mejor borrarla. Puedes hacerlo manualmente desde el explorador de archivos o con el comando:
+```powershell
+Remove-Item -Recurse -Force .venv
+```
+
+### 2. Crear un nuevo entorno virtual
+Ejecuta este comando para crear un entorno virtual fresco y específico para esta computadora:
+```powershell
+python -m venv .venv
+```
+
+### 3. Activar el entorno virtual
+En Windows, actívalo con este comando:
+```powershell
+.\.venv\Scripts\activate
+```
+*(Sabrás que está activado porque verás `(.venv)` al principio de la línea de tu consola).*
+
+### 4. Instalar las dependencias
+Una vez activado el entorno, instala todos los paquetes necesarios leyendo el archivo `requirements.txt`:
+```powershell
+pip install -r requirements.txt
+```
+
+---
+**💡 Buena práctica (Git):**
+Para evitar que este problema ocurra al compartir código a través de repositorios (como GitHub), asegúrate de tener un archivo llamado `.gitignore` en la raíz de tu proyecto que contenga la línea:
+```text
+.venv/
+```
+Esto le dirá a Git que ignore la carpeta del entorno virtual para que nunca se suba ni se copie accidentalmente. Solo debes compartir tu código y el archivo `requirements.txt`.

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas - Documentos Internos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-mode">
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-robot"></i>
+                <h2>Challe</h2>
+            </div>
+            
+            <div class="upload-section">
+                <h3>Sube tus Documentos aqui</h3>
+                <div id="drop-zone" class="drop-zone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>Arrastra archivos aquí o haz clic para subir</p>
+                    <input type="file" id="file-input" multiple accept=".pdf,.docx,.xlsx,.xls" hidden>
+                </div>
+                <div id="upload-status"></div>
+            </div>
+
+            <div class="config-section">
+                <h3>Configuración</h3>
+                <p>Modelo: Gemini Pro Flash</p>
+                <p>VectorStore: FAISS</p>
+            </div>
+        </aside>
+
+        <main class="chat-main">
+            <header class="chat-header">
+                <h1>Consultas - Documentos Internos</h1>
+                <p>Consulta sobre la base de conocimiento de documentos internos</p>
+            </header>
+            
+            <div class="chat-box" id="chat-box">
+                <div class="message bot">
+                    <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="message-content">
+                        <p>¡Hola! Soy tu asistente inteligente. Sube tus documentos y pregúntame lo que necesites.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="typing-indicator hidden" id="typing-indicator">
+                <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                <div class="dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <form id="chat-form">
+                    <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí..." autocomplete="off">
+                    <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
