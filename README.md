@@ -26,7 +26,14 @@ El sistema está dividido en varios componentes principales:
    - Soporta PDFs (`pypdf`), Word (`python-docx`) y Excel (`openpyxl` / `pandas`).
    - Retorna objetos `Document` de LangChain con metadata útil como la fuente, página u hoja.
 
-## 🚀 Instrucciones para Ejecutar el Proyecto
+## 🛠️ Tecnologías Usadas
+- **Python 3**
+- **Flask**
+- **LangChain**
+- **FAISS** (Base de datos vectorial)
+- **Google Gemini** (LLM y Embeddings)
+- **PyPDF, python-docx, pandas** (Para lectura de documentos)
+## 🚀 Instrucciones para Ejecutar el Proyecto Localmente
 
 ### 1. Clonar el repositorio
 (Si corresponde a un repositorio Git)
@@ -78,11 +85,3 @@ Leer el archivo entorno.txt
    - **Pregunta:** *"¿Quién es el contacto de emergencia para Juan Pérez?"*
    - **Respuesta (Ejemplo):** *"El contacto de emergencia para Juan Pérez es María López (tel: 555-1234)."*
    - *(Mostrará como fuente: lista_empleados.xlsx)*
-
-## 🛠️ Tecnologías Usadas
-- **Python 3**
-- **Flask**
-- **LangChain**
-- **FAISS** (Base de datos vectorial)
-- **Google Gemini** (LLM y Embeddings)
-- **PyPDF, python-docx, pandas** (Para lectura de documentos)
