@@ -1,4 +1,4 @@
-# Challenge Agente - Consultas - Documentos Internos
+# 🤖 Challenge Agente - Consultas - Documentos Internos
 
 Un proyecto de Agente Inteligente Funcional diseñado para interactuar con una base de conocimiento interna compuesta por documentos PDF, Word y Excel. Desarrollado con Python, Flask, LangChain y Google Gemini.
 
@@ -146,3 +146,46 @@ Abre tu navegador web e ingresa a `http://165.1.120.30:8000/`.
 
 4. **Respuesta a archivo pdf**
 <img width="1600" height="903" alt="respuesta de archivo pdf" src="https://github.com/user-attachments/assets/635d63c7-be78-49ea-adae-c82c6a550977" />
+
+## 🚀 Opción B - Despliegue del Proyecto en Windows Server 2016
+
+1. 🛠️**Diagnóstico y Cambio de Arquitectura** 
+
+Se detectó que el servidor original en la nube (1 OCPU) generaba bloqueos ("Deadlocks") al intentar cargar la base de datos vectorial FAISS y el modelo de IA.
+Para garantizar rendimiento y evitar cuellos de botella de hardware, se migró el despliegue a un entorno local más robusto sobre Windows Server 2016.
+
+2. 🐍 **Preparación del Entorno Python**
+
+Se creó un entorno virtual aislado para no afectar el sistema operativo base: 
+```bash
+python -m venv venv
+```
+Se activó el entorno: 
+```bash
+venv\Scripts\activate
+```
+Se instalaron las librerías y dependencias necesarias del proyecto: 
+```bash
+pip install -r requirements.txt
+```
+3. ⚙️ **Adaptación del Servidor Web (Producción)** 
+
+Dado que Gunicorn es exclusivo para arquitecturas Linux/UNIX, se reemplazó por Waitress, un servidor de nivel de producción nativo para Windows.
+```bash
+pip install waitress
+```
+4. ▶️**Ejecución del Servicio** 
+
+Se levantó la aplicación escuchando en todas las interfaces de red del servidor (IP local 192.168.1.250) en el puerto 8000 mediante el comando:
+```bash
+waitress-serve --listen=0.0.0.0:8000 app:app
+```
+5. 🌐**Publicación y Ruteo (MikroTik)** 
+
+Se configuró una regla de NAT/Port Forwarding en el router MikroTik.
+
+Todo el tráfico externo entrante al puerto 8000 de la IP pública, se redirige exitosamente a la IP interna del Windows Server (192.168.1.250:8000).
+
+✅**Resultado:** Aplicación accesible desde internet de forma estable y fluida en la url: `http://181.122.60.230:8000/`
+
+<img width="1890" height="1080" alt="resultado opcion b" src="https://github.com/user-attachments/assets/30b444c4-a6e7-4500-82ce-093a450528cd" />
