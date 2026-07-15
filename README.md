@@ -132,3 +132,17 @@ Abre tu navegador web e ingresa a `http://165.1.120.30:8000/`.
    - **Pregunta:** *"¿Quién es el contacto de emergencia para Juan Pérez?"*
    - **Respuesta (Ejemplo):** *"El contacto de emergencia para Juan Pérez es María López (tel: 555-1234)."*
    - *(Mostrará como fuente: lista_empleados.xlsx)*
+
+## 📸 Evidencia de funcionamiento
+
+1. **Consola en el OCI**
+<img width="1135" height="258" alt="consola_funcionando" src="https://github.com/user-attachments/assets/a3d498ca-efc3-426d-a3d3-2bd0ed0f10ef" />
+
+2. **Respuesta a archivo word**
+<img width="1896" height="1107" alt="respuesta de archivo docx" src="https://github.com/user-attachments/assets/c50b9c19-c1f4-4f76-9574-e20fc99fc1f3" />
+
+3. **Respuesta a archivo excel**
+<img width="1887" height="1081" alt="respuesta de archivo excel" src="https://github.com/user-attachments/assets/cb8feecc-8e1d-4f2c-9e38-ec85ba3316ed" />
+
+4. **Respuesta a archivo pdf**
+<img width="1600" height="903" alt="respuesta de archivo pdf" src="https://github.com/user-attachments/assets/635d63c7-be78-49ea-adae-c82c6a550977" />
