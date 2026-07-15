@@ -33,6 +33,7 @@ El sistema está dividido en varios componentes principales:
 - **FAISS** (Base de datos vectorial)
 - **Google Gemini** (LLM y Embeddings)
 - **PyPDF, python-docx, pandas** (Para lectura de documentos)
+  
 ## 🚀 Instrucciones para Ejecutar el Proyecto Localmente
 
 ### 1. Clonar el repositorio
@@ -51,7 +52,6 @@ venv\Scripts\activate
 # En Linux/Mac:
 source venv/bin/activate
 ```
-
 ### 3. Instalar dependencias
 ```bash
 pip install -r requirements.txt
@@ -62,7 +62,6 @@ Crea un archivo llamado `.env` en la raíz del proyecto tomando como base `.env.
 ```env
 GOOGLE_API_KEY=tu_api_key
 ```
-
 ### 5. Ejecutar la aplicación
 ```bash
 python app.py
@@ -71,6 +70,54 @@ Abre tu navegador web e ingresa a `http://127.0.0.1:5000/`.
 
 ### 6. Observaciones generales ante problemas de ejecución
 Leer el archivo entorno.txt
+
+## 🌐Deploy en OCI
+### 1. Crear el Compartimento
+Se crea el compartimento nnoguera-agente
+<img width="1555" height="462" alt="image" src="https://github.com/user-attachments/assets/953184a6-dd77-49fa-83d4-1322dc6b534a" />
+
+### 2. Crear la VCN e Instancia 
+**Se crea la Virtual Cloud Network (VCN)**
+<img width="1535" height="436" alt="image" src="https://github.com/user-attachments/assets/5b06e9ef-fef0-4625-b821-84ba804f4ed5" />
+
+**Se crea la instancia instancia-agente**
+<img width="1551" height="370" alt="image" src="https://github.com/user-attachments/assets/33bd4315-1fc0-4891-a483-7509982e7894" />
+
+**Se crea el par de llaves (privada y pública)** que OCI te ofrece y debes guardarla en un lugar seguro para utilizarla en tu instancia 
+
+**Configuración de Red: La Subnet Pública y Reglas de Entrada**
+Para que la aplicación reciba tráfico externo en el puerto 8000, configuramos en la red:
+<img width="1517" height="555" alt="image" src="https://github.com/user-attachments/assets/1944ac7d-8304-453e-b885-2a2929613cb2" />
+
+### 3. Conectar a la VM e Instalar Python 
+Conectarte a la VM e Instalar Python
+
+### 4. Clonar el repositorio y Configurar el Entorno
+```bash
+git clone <url_del_repo>
+cd challenge-nnoguera-agente
+```
+Crea y activa un entorno virtual para mantener limpias las dependencias
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+Instalar los requerimientos del proyecto
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+Instalar Gunicorn (Green Unicorn) como servidor web HTTP compatible con el estándar WSGI para aplicaciones en Python. 
+```bash
+pip install gunicorn
+pip install --user gunicorn
+sudo dnf install gunicorn
+```
+Ejecutar via Python
+```bash
+PYTHONPATH=/home/opc/challenge-nnoguera-agente python3 -m gunicorn --bind 0.0.0.0:8000 app:app
+```
+Abre tu navegador web e ingresa a `http://165.1.120.30:8000/`.
 
 ## 🧠 Ejemplos de Uso
 
